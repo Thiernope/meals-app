@@ -1,20 +1,30 @@
+
+import 'react-native-gesture-handler';
+
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import Home from './screens/Home';
+import StackScreensContainer from './screens/StackScreenContainer';
 
 export default function App() {
+  const [isLoggedIn, setIsiLogined ] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <StatusBar style="dark"/>
+     {isLoggedIn?    <NavigationContainer>
+      <StackScreensContainer/>
+     </NavigationContainer>: 
+     <Home setIsiLogined ={setIsiLogined }/>
+     }
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center"
   },
 });
